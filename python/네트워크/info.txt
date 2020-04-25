@@ -1,0 +1,4 @@
+파이참은 2개 따로 Run되던데
+
+vscode는 터미널 경로 들어가서
+python socket1.py 실행

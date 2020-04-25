@@ -1,0 +1,14 @@
+딕셔너리(=사전) - 키:값의 쌍의 자료구조
+- 맵 느낌
+- for문 unordered인지 확인 안 해봄.
+
+
+리스트
+- stl vector, Po BArray, java arraylist, go slice
+
+집합(Set)
+- 중복 입력 불가, 교집합, 합집합 등도 지원해준다고 함.
+
+
+튜플
+변경 불가 읽기 전용 리스트. 보통 api에서 튜플을 입력으로 자주 사용
