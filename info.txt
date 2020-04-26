@@ -1,5 +1,8 @@
 vscode 디버깅 시 BreakPoint 멈추기 전에 사이드 바 안 올라오도록.
 preference - setting - open debug 검색 : openOnDebugBreak 설정
 
+페이지 인코딩 추측 자동 설정
+auto guess Encoding
 
-
+사이드 explorer 트리 탭 간격
+workbench - treeindent 30
