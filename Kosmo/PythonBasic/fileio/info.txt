@@ -1,0 +1,6 @@
+korean language txt file
+vs code right bottom -> utf-8 setting
+
+
+파이참 상대경로랑 다르게 vscode는 현재 패키지부터 시작..
+그리고 경로간 역슬래시 안 되고 슬래시로 해야함.
