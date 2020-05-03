@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup  # html 나열.. 해야되나?
 LIMIT = 50
 BASE_URL = ""
 
+
 def extract_job(html):
     strTitle = html.find("h2", {"class": "title"}).find("a")["title"]
 
@@ -68,5 +69,8 @@ def extract_lastPage(searchWhat):
 
 def get_jobs(searchWhat):
     lastPageNum = extract_lastPage(searchWhat)
+    print("extract_lastPage :", lastPageNum)
+
+    lastPageNum = 1  # 1page만
     print("extract_lastPage :", lastPageNum)
     return extract_jobs(lastPageNum)
