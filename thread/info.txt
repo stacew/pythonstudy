@@ -1,8 +1,0 @@
-import threading
-논리적 동시성 필요할 때
-
-threading.Tread 오브젝트의 .start()를 하는데 .run()이랑 다른지?
-
-
-import  multiprocessing
-멀티 코어 병렬 처리의 성능 필요할 때

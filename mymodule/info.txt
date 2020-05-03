@@ -1,7 +1,0 @@
-동일 패키지에서 mymodule 가져올 때
-
-파이참에서는
-from mymodule.부품으로 하였는데,
-
-vscode는
-from 부품으로 하네요...
