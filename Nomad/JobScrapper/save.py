@@ -3,7 +3,7 @@ import csv
 
 def save_to_file(jobs):
     # newline='' : writerow마다 한 줄 씩 띄우는 것 막음
-    file = open('jobs.csv', mode="w", newline='')
+    file = open('jobs.csv', mode="w", newline='', encoding="utf-8")
     writer = csv.writer(file)
 
     writer.writerow(["title", "company", "location", "link"])

@@ -1,9 +1,6 @@
 import requests  # Request 요청
 from bs4 import BeautifulSoup  # html 나열.. 해야되나?
 
-LIMIT = 50
-BASE_URL = ""
-
 
 def extract_job(html):
     strTitle = html.find("h2", {"class": "title"}).find("a")["title"]
@@ -27,7 +24,7 @@ def extract_job(html):
             }
 
 
-def extract_jobs(last_page):
+def extract_jobs(BASE_URL, LIMIT, last_page):
     jobs = []
 
     for page in range(last_page):
@@ -48,9 +45,8 @@ def extract_jobs(last_page):
     return jobs
 
 
-def extract_lastPage(searchWhat):
-    global BASE_URL
-    BASE_URL = 'https://www.indeed.com/jobs?q='+searchWhat+f'&limit={LIMIT}'
+def extract_lastPage(BASE_URL):
+
     print("extract_lastPage() Get URL :", BASE_URL)
     result = requests.get(BASE_URL)
     print("status code :", result.status_code)
@@ -68,9 +64,12 @@ def extract_lastPage(searchWhat):
 
 
 def get_jobs(searchWhat):
-    lastPageNum = extract_lastPage(searchWhat)
+    LIMIT = 50
+    BASE_URL = f'https://www.indeed.com/jobs?q={searchWhat}&limit={LIMIT}'
+
+    lastPageNum = extract_lastPage(BASE_URL)
     print("extract_lastPage :", lastPageNum)
 
     lastPageNum = 1  # 1page만
     print("extract_lastPage :", lastPageNum)
-    return extract_jobs(lastPageNum)
+    return extract_jobs(BASE_URL, LIMIT, lastPageNum)

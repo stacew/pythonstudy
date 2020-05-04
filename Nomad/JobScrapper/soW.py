@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-BASE_URL = ""
-
 
 def extract_job(html):
     strTitle = html.find("h2").find("a")["title"]
@@ -17,12 +15,12 @@ def extract_job(html):
     strJobID = html["data-jobid"]
     return {'title': strTitle,
             'company': strCompany.strip(),
-            'location': strLocation.strip(),
+            'location': strLocation.strip("-").strip("\r").strip("\n"),
             'link': f"https://stackoverflow.com/jobs/{strJobID}"
             }
 
 
-def extract_jobs(last_page):
+def extract_jobs(BASE_URL, last_page):
     jobs = []
     for page in range(last_page):
         GET_PAGE_URL = f"{BASE_URL}&pg={page + 1}"
@@ -41,9 +39,7 @@ def extract_jobs(last_page):
         return jobs
 
 
-def extract_lastPage(searchWhat):
-    global BASE_URL
-    BASE_URL = f"https://stackoverflow.com/jobs?q={searchWhat}&sort=i"
+def extract_lastPage(BASE_URL):
     print("extract_lastPage() Get URL :", BASE_URL)
     result = requests.get(BASE_URL)
     print("status code :", result.status_code)
@@ -55,9 +51,12 @@ def extract_lastPage(searchWhat):
 
 
 def get_jobs(searchWhat):
-    lastPageNum = extract_lastPage(searchWhat)
+    BASE_URL = f"https://stackoverflow.com/jobs?q={searchWhat}&sort=i"
+
+    lastPageNum = extract_lastPage(BASE_URL)
     print("extract_lastPage :", lastPageNum)
 
     lastPageNum = 1  # 1page만
     print("extract_lastPage :", lastPageNum)
-    return extract_jobs(lastPageNum)
+
+    return extract_jobs(BASE_URL, lastPageNum)
